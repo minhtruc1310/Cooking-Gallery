@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, RouteComponentProps, Switch } from 'react-router-dom';
+import { Spinner } from 'reactstrap';
+import AuthRoute from './components/AuthRoute/AuthRoute';
+import { auth } from './config/firebase';
+import logging from './config/logging';
+import routes from './config/routes';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export interface IApplicationProps { }
+
+const App: React.FunctionComponent<IApplicationProps> = props => {
+    const [loading, setLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        auth.onAuthStateChanged(user => {
+            if (user)
+            {
+                logging.info('User detected.');
+            }
+            else
+            {
+                logging.info('No user detected');
+            }
+
+            setLoading(false);
+        })
+    }, []);
+
+    if (loading)
+        return <Spinner color="info" />
+
+    return (
+        <div>
+            <Router>
+              <Switch>
+                  {routes.map((route, index) => 
+                      <Route
+                          key={index}
+                          path={route.path} 
+                          exact={route.exact} 
+                          render={(routeProps: RouteComponentProps<any>) => {
+                              if (route.protected)
+                                  return <AuthRoute><route.component  {...routeProps} /></AuthRoute>;
+
+                              return <route.component  {...routeProps} />;
+                          }}
+                      />)}
+              </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

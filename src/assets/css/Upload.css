@@ -1,0 +1,30 @@
+.upload-menu{
+    text-align: center;
+}
+
+.upload {
+    margin-top: 2%;
+}
+
+.form-upload input{
+    width: 25%;
+    padding: 5px;
+    border-radius: 7px;
+}
+
+.form-upload textarea{
+    width: 25%;
+    height: 20vh;
+    border-radius: 7px;
+    margin-bottom: 1%;
+}
+
+
+.upload button {
+    margin-top: 5px;
+    background: linear-gradient(to right, #d66d75, #ecc9c3);   
+    border-radius: 7px;
+    font-size: 15px;
+    padding: 5px;
+    width: 8%;
+}

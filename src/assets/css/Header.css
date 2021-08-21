@@ -1,0 +1,7 @@
+.ant-menu-dark.ant-menu-horizontal >.ant-menu-item:hover { 
+    background-color: #353e46;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
+    background-color: #353e46;
+}
