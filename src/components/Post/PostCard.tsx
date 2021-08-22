@@ -41,7 +41,7 @@ const PostCard = (props: any) => {
             <h1>{post.name}</h1>
             <h4>Prices: {post.prices}</h4>
             <h4>Location: {post.location}</h4>
-            <h4>Description: {TextAbstract(post.description, 30)}</h4>
+            <h4>Description: {TextAbstract(post.description, 25)}</h4>
             <h4>Upload by: {post.user}</h4>
         </div>
     );

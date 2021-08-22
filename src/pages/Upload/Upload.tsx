@@ -35,10 +35,27 @@ const Upload = () => {
             description: description,
             user: auth.currentUser?.displayName
         }
+
+        
         
         results.post('/Posts.json', data).then(res => {
             var storageRef = firebase.storage().ref('Images').child(res.data.name);
             storageRef.put(image);
+
+            const postLike = {
+                postId: res.data.name,
+                numLike: 0,
+                peopleLike: [ ]
+            }
+    
+            const postCmt = {
+                cmtId: res.data.name,
+                peopleCmt: [ ]
+            }
+    
+            results.post('/Likes.json', postLike);
+            results.post('/Comments.json', postCmt);
+
             history.push('/');
             alert('Uploaded successful!');
         })

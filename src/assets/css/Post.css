@@ -1,0 +1,43 @@
+.post-div {
+    background: white;
+    width: 90%;
+    border-radius: 10px;
+    min-height: 90vh;
+    margin: 0 0 0 5%;
+    padding: 0px;
+    word-break: break-all;
+}
+
+.post-wrap {
+    display: flex;
+}
+
+.post {
+    padding: 2.36%;
+    background: linear-gradient(to right, #1d2b64, #f8cdda);
+    font-family: 'Quicksand', sans-serif;
+
+}
+
+.post img{
+    width: 640px;
+    padding: 10px;
+    border-radius: 20px;
+    height: 85vh;
+    margin: 3% 0 0 3%;
+}
+
+.post-img {
+    margin-right: 2%;
+}
+
+.post-content {
+    padding: 10px;
+    margin-top: 1%;
+    font-size: 13px;
+}
+
+.post-content h1{
+    font-weight: bolder;
+    font-size: 40px;
+}
